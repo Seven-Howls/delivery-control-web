@@ -1,7 +1,25 @@
-# Vue 3 + Vite
+# Aplicação Web Para Delivery Control
+  >Essa aplicação é voltada para a interface dos usuarios do lado da empresa, onde vamos ter os controles, relatorios, entre outras funções.
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Como Desenvolver Localmente
+  1. Clonando o projeto na sua maquina
+     ```
+      git clone https://github.com/Seven-Howls/delivery-control-web
+     ```
+  2. Instalando dependencias do projeto
+     ```
+      npm install
+     ```
+  3. Buildando o Projeto local
+     ```
+      npm run build
+     ```
+  4. Rodando o servidor local do vite
+     ```
+      npm run dev
+     ```
 
-## Recommended IDE Setup
+## Funções Uteis para desenvolvimento com Vuejs 3
+  > Abaixo encontrasse uma serie de funções nativas do Vuejs 3 como (hooks, diretivas, etc) que diferencia o framework dos demais. Caso tenha alguma duvida acesse a documentação oficial do **[Vuejs 3](https://vuejs.org/guide/introduction)**
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Serviços criados para facilitar o desenvolvimento do projeto
