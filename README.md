@@ -24,10 +24,10 @@
 
 
 ### Cronograma intensivão Vuejs 04-05
-  - [ ] estrutura do arquivo vuejs
-  - [ ] diretivas
-  - [ ] data e methods
-  - [ ] hooks
-  - [ ] props
-  - [ ] emit
+  - [X] estrutura do arquivo vuejs
+  - [X] diretivas
+  - [X] data e methods
+  - [X] hooks
+  - [X] props
+  - [X] emit
   - [ ] usar tailwindcss COM APPLY 
