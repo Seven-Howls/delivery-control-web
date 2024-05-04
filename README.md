@@ -22,4 +22,12 @@
 ## Funções Uteis para desenvolvimento com Vuejs 3
   > Abaixo encontrasse uma serie de funções nativas do Vuejs 3 como (hooks, diretivas, etc) que diferencia o framework dos demais. Caso tenha alguma duvida acesse a documentação oficial do **[Vuejs 3](https://vuejs.org/guide/introduction)**
 
-## Serviços criados para facilitar o desenvolvimento do projeto
+
+### Cronograma intensivão Vuejs 04-05
+  - [ ] estrutura do arquivo vuejs
+  - [ ] diretivas
+  - [ ] data e methods
+  - [ ] hooks
+  - [ ] props
+  - [ ] emit
+  - [ ] usar tailwindcss COM APPLY 
