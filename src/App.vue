@@ -1,7 +1,27 @@
-<script setup>
+<script>
+import SideBarComponent from './components/sidebar/SideBarComponent.vue'
+
+export default {
+  name: 'App',
+  components: {
+    SideBarComponent
+  },
+  data() {
+    return {
+      
+    }
+  },
+
+}
 </script>
 
 <template>
-  <router-link to="/about">teste</router-link>
-  <router-view />
+  <SideBarComponent/>
+  <div class="ml-[16%]">
+    <router-view />
+  </div>
 </template>
+
+<style>
+
+</style>

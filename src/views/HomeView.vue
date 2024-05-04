@@ -1,9 +1,20 @@
-<script setup>
+<script>
+import HomeComponent from '../components/home/HomeComponent.vue';
+export default {
+  name: 'Home',
+  components: {
+    HomeComponent,
+  },
+  data() {
+    return {
 
+    }
+  }
+};
 </script>
 
 <template>
-  <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+
+  <HomeComponent/>
+  
 </template>
