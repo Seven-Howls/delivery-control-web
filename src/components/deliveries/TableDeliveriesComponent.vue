@@ -23,23 +23,26 @@ export default {
 </script>
 
 <template>
-  <div class="mt-12">
-    <header
-      class="containerTabelaTitulo">
-      <h3 class="text-center w-full text-xl">Entrega</h3>
-      <h3 class="text-center w-full text-xl">Entregador</h3>
-      <h3 class="text-center w-full text-xl">Data</h3>
-      <h3 class="text-center w-full text-xl">Valor</h3>
-      <h3 class="text-center w-full text-xl">Status</h3>
-    </header>
+  <div class="mt-12 ">
+    <div class="flex justify-center">
+        <header
+          class="containerTabelaTitulo borderradius">
+          <h3 class="text-center w-full text-xl">Entrega</h3>
+          <h3 class="text-center w-full text-xl">Entregador</h3>
+          <h3 class="text-center w-full text-xl">Data</h3>
+          <h3 class="text-center w-full text-xl">Valor</h3>
+          <h3 class="text-center w-full text-xl">Status</h3>
+        </header>
+    </div>
+    <div class="shadow-md">
     <details class="question py-4" v-for="delivery in deliveries" :key="delivery.id">
       <summary class="flex items-center">
-        <div class="flex justify-around w-full bg-cinza py-2 ml-auto">
-          <p class="w-full">#001</p>
-          <p class="w-full">Tinkercard</p>
-          <p class="w-full">01/01/0101</p>
-          <p class="w-full">R$ 99,99</p>
-          <p class="w-full">Pendente</p>
+        <div class="flex justify-around items-center  w-full bg-white py-2 ">
+          <p class="w-full text-center">#001</p>
+          <p class="w-full text-center">Tinkercard</p>
+          <p class="w-full text-center">01/01/0101</p>
+          <p class="w-full text-center">R$ 99,99</p>
+          <p class="w-full text-center">Pendente</p>
         </div>
       </summary>
       <div class="mt-4 leading-normal text-md ">I lived near lake Eerie and I really miss sunsets over the water. Fuga
@@ -47,8 +50,9 @@ export default {
         that'll be blood when they marry my daughters. And the pain that we left at the station will stay in a jar
         behind us. We can pickle the pain into blue ribbon winners at county contests....
         Gosh. I loved her to bits</div>
-    </details>
-
+      </details>
+      
+    </div>
 
   </div>
 </template>
@@ -56,7 +60,10 @@ export default {
 <style scoped>
 
 .containerTabelaTitulo {
-  @apply flex w-full justify-around divide-x-2 text-center bg-light-blue  py-2 text-white divide-white 
+  @apply flex w-11/12 drop-shadow-md justify-around  text-center bg-light-blue  py-2 text-white  borderradius
+}
+.borderradius{
+  border-radius: 7px;
 }
 
 </style>
