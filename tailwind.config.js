@@ -14,7 +14,8 @@ export default {
       'light-blue': '#0871CA',
       'transparent': 'transparent',
       'white': '#FFFFFF',
-      'cinza': '#949494'
+      'cinza': '#707070',
+      'cinza-tabela': '#D9D9D9'
     },
     borderRadius: {
       'sidebar': '100px',
