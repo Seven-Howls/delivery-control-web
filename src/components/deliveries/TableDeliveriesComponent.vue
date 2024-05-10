@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <div class="mt-12 relative">
+  <div class="mt-12 relative bg-cinza">
     <div class="flex justify-center">
       <header class="containerTabelaTitulo borderradius absolute w-11/12">
         <h3 class="text-center w-full text-xl">Entrega</h3>
@@ -33,8 +33,8 @@ export default {
         <h3 class="text-center w-full text-xl">Status</h3>
       </header>
     </div>
-    <div class="shadow-md py-4 bg-white relative">
-      <div class="flex justify-center flex-col items-center">
+    <div class="shadow-md py-10 bg-white relative">
+      <div class="flex justify-center flex-col items-center overflow-auto max-h-500	" >
         <details class="question py-4   w-11/12 " v-for="delivery in deliveries" :key="delivery.id">
           <summary class="flex items-center borda-inferior ">
             <div class="flex justify-around items-center text-cinza font-semibold   w-full bg-white  ">
@@ -45,12 +45,7 @@ export default {
               <p class="w-full text-center text-xl">Pendente</p>
             </div>
           </summary>
-          <div class="mt-4 leading-normal text-md ">
-            I lived near lake Eerie and I really miss sunsets over the water. Fuga perspiciatis quidem sunt animi. We can
-            all grab at the chance to be handsome farmers. YEAH you can have 21 sons that'll be blood when they marry my
-            daughters. And the pain that we left at the station will stay in a jar behind us. We can pickle the pain into
-            blue ribbon winners at county contests.... Gosh. I loved her to bits
-          </div>
+          
         </details>
       </div>
       <div class="flex justify-center">
