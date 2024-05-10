@@ -34,15 +34,15 @@ export default {
       </header>
     </div>
     <div class="shadow-md py-10 bg-white relative">
-      <div class="flex justify-center flex-col items-center overflow-auto max-h-500	" >
-        <details class="question py-4   w-11/12 " v-for="delivery in deliveries" :key="delivery.id">
+      <div class="flex justify-center py-4  flex-col items-center overflow-auto max-h-500	" >
+        <details class="question py-3  w-11/12 " v-for="delivery in deliveries" :key="delivery.id">
           <summary class="flex items-center borda-inferior ">
-            <div class="flex justify-around items-center text-cinza font-semibold   w-full bg-white  ">
-              <p class="w-full text-center text-xl">#001</p>
-              <p class="w-full text-center text-xl">ThenMarques Silva </p>
-              <p class="w-full text-center text-xl">01/01/0101</p>
-              <p class="w-full text-center text-xl">R$ 99,99</p>
-              <p class="w-full text-center text-xl">Pendente</p>
+            <div class="flex justify-around items-center  text-cinza font-semibold   w-full bg-white  ">
+              <p class="w-full text-center text-lg">#001</p>
+              <p class="w-full text-center text-lg">ThenMarques Silva </p>
+              <p class="w-full text-center text-lg">01/01/0101</p>
+              <p class="w-full text-center text-lg">R$ 99,99</p>
+              <p class="w-full text-center text-lg">Pendente</p>
             </div>
           </summary>
           
