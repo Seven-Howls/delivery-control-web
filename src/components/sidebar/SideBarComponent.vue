@@ -26,9 +26,7 @@ export default {
       <h1>Delivery Control</h1>
     </div>
     <div class="container-nav">
-      <div class="flex w-full justify-center">
-        <ButtonAdd :title_button="'Adicionar Entrega'" />
-      </div>
+      
       <div class="flex flex-col gap-8 w-full h-full items-end py-12">
         <ButtonLink :links="routes"/>
       </div>
