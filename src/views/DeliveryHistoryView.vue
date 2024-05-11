@@ -17,7 +17,7 @@ export default {
 
 <template>
 
-  <DeliveryHistoryComponent />
+  <DeliveryHistoryComponent class="h-screen" />
 
 </template>
 

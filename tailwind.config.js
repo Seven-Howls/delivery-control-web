@@ -18,7 +18,8 @@ export default {
       'search-gray': '#949494',
       'cinza-tabela': '#D9D9D9',
       'border-blue': '#043864',
-      'filter-blue': '#043864'
+      'filter-blue': '#043864',
+      'gray-text': '#B3B3B3',
     },
     borderRadius: {
       'sidebar': '100px',

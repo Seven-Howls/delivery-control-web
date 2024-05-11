@@ -50,11 +50,11 @@ export default {
       </div>
       <div class="flex justify-center">
         <div class="flex justify-between items-start w-11/12">
-          <div class=" bg-cinza-tabela bg-opacity-16">
-            <select class="outline-none bg-opacity-16" v-model="selectedRows" id="rows">
+          <div class=" bg-cinza-tabela bg-opacity-16 borda-inferior pt-1 px-2 mt-5">
+            <select class="text-gray-text select-estilizado outline-none bg-opacity-16 " v-model="selectedRows" id="rows">
                   <option v-for="n in options" :value="n">{{ n }}</option>
                 </select>
-            <label for="rows" >Linhas</label>
+            <label for="rows" class="text-gray-text" >Linhas</label>
           </div>
           <div class="">
           
@@ -77,6 +77,13 @@ export default {
 .borda-inferior {
   border-bottom: 2px solid #d9d9d9;
 }
-
+.select-estilizado{
+  border: 0  !important; /* Remove a borda */
+  background: transparent  !important; /* Remove o fundo */
+  outline: 0 !important;
+}
+select {
+  border: none !important;
+}
 
 </style>
