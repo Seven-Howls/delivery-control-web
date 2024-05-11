@@ -35,7 +35,9 @@ export default {
     maxHeight: {
       '500': '500px'
     },
-
+    boxShadow: {
+      'header': '0px 1px 14px 2px rgb(0 0 0 / 25%)',
+    },
     extend: {
       inset: {
         '25': '-25px',
