@@ -22,16 +22,24 @@ export default {
     },
     borderRadius: {
       'sidebar': '100px',
-      'full': '9999px'
+      'full': '9999px',
+      'table-header':'7px',
+      '7':'7px',
+      'search-input': '10px 10px 0px 0px;'
     },
     opacity: {
-      '16': '0.16'
+      '16': '0.16',
+      '100': '100%'
     },
     maxHeight: {
       '500': '500px'
     },
 
-    extend: {},
+    extend: {
+      inset: {
+        '25': '-25px',
+      },
+    },
   },
   plugins: [],
 }
