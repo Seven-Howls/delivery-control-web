@@ -53,14 +53,14 @@ export default {
 
   </div>
   
-  <div class="pt-6" v-if="filterShow">
-    <form @submit.prevent class="flex flex-row justify-between">
+  <div class="pt-6 " v-if="filterShow">
+    <form @submit.prevent class="flex flex-row justify-between items-end">
       
-      <FilterSelectComponent label="Nome"/>
-      <FilterSelectComponent label="entrega"/>
-      <FilterSelectComponent label="media entrega"/>
+      <FilterSelectComponent label="Valor"/>
+      <FilterSelectComponent label="Ordem"/>
+      <FilterSelectComponent label="status"/>
       
-      <button class="btn-clear-filter">
+      <button class="btn-clear-filter h-1/4">
         <span><font-awesome-icon class="rotate-45 " :icon="faCircleXmark" /></span>
         <label class=" pl-2">Limpar</label>
       </button>
