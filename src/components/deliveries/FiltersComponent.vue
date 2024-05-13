@@ -2,21 +2,27 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import { faMagnifyingGlass, faFilter } from '@fortawesome/free-solid-svg-icons'
+import FilterSelectComponent from './FilterSelectComponent.vue';
+
 export default {
-  name: 'FiltersComponent',
+  
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    FilterSelectComponent,
+
   },
   data() {
     return {
       faCircleXmark,
       faMagnifyingGlass,
       faFilter,
-      
+      filterShow: false,
     }
   },
   methods: {
-
+    toggleFilterPanel() {
+      this.filterShow = !this.filterShow;
+    }
   }
 }
 </script>
@@ -32,9 +38,9 @@ export default {
               size="xl" /> </button>
         </div>
         <div>
-          <button><font-awesome-icon class=" btn-filter" :icon="faFilter" size="lg" /></button>
+          <button @click="toggleFilterPanel"><font-awesome-icon class=" btn-filter" :icon="faFilter"
+              size="lg" /></button>
         </div>
-
       </div>
     </div>
     <div>
@@ -42,9 +48,26 @@ export default {
         <span><font-awesome-icon class="rotate-45 " :icon="faCircleXmark" /></span>
         <label class=" pl-2">Cadastrar </label>
       </button>
-    </div>
-  </div>
 
+    </div>
+
+  </div>
+  
+  <div class="pt-6" v-if="filterShow">
+    <form @submit.prevent class="flex flex-row justify-between">
+      
+      <FilterSelectComponent label="Nome"/>
+      <FilterSelectComponent label="entrega"/>
+      <FilterSelectComponent label="media entrega"/>
+      
+      <button class="btn-clear-filter">
+        <span><font-awesome-icon class="rotate-45 " :icon="faCircleXmark" /></span>
+        <label class=" pl-2">Limpar</label>
+      </button>
+      
+    </form>
+  </div>
+  
 </template>
 <style scoped>
 .input-search {
@@ -62,4 +85,9 @@ export default {
 .borda-inferior {
   border-bottom: 2px solid #043864;
 }
+
+.btn-clear-filter {
+  @apply bg-error hover:bg-light-blue text-white font-bold py-2 px-11 rounded-7 inline-flex items-center
+}
+
 </style>
