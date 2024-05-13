@@ -37,15 +37,16 @@ export default {
 </script>
 
 <template>
-  <div class="container-deliveries-history">
-    <FiltersComponent/>
-    <TableDeliveriesComponent :deliveries="deliveries"/>
+  <div>
+
+    <div class=" w-9/12  h-screen">
+      <FilterSelectComponent/>
+      <TableDeliveriesComponent :deliveries="deliveries"/>
+    </div>
   </div>
 </template>
 
 <style scoped>
 
-.container-deliveries-history {
-  @apply p-24
-}
+
 </style>

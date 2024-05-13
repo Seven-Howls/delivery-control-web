@@ -29,7 +29,7 @@ export default {
 
 <template>
 
-  <div class="flex flex-row    w-full">
+  <div class="flex flex-row  w-full">
     <div class="flex flex-row w-11/12 ">
       <div class="flex  gap-2 w-44">
         <div class=" input-search ">

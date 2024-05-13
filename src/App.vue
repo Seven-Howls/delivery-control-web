@@ -16,8 +16,8 @@ export default {
 </script>
 
 <template>
-  <SideBarComponent/>
-  <div class="ml-[16%]">
+  <SideBarComponent class="overflow-y-hidden"/>
+  <div class=" overflow-y-hidden">
     <router-view />
   </div>
 </template>
