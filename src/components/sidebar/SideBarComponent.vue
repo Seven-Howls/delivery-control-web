@@ -1,6 +1,8 @@
 <script>
 import ButtonAdd from './ButtonAdd.vue';
 import ButtonLink from './ButtonLink.vue';
+
+
 export default {
   name: 'SideBarComponente',
   components: {
@@ -10,9 +12,9 @@ export default {
   data() {
     return {
       routes: [
-        { title_route: 'Dashboard', link: 'dashboard', icone: 'fa-light fa-table-columns' },
-        { title_route: 'Entregas', link: 'deliveries-history', icone: 'fa-light fa-cart-plus' },
-        { title_route: 'Entregadores', link: 'entregadores', icone: 'fa-light fa-motorcycle' },
+        { title_route: 'Dashboard', link: 'dashboard', icone: ' fa-table-columns' },
+        { title_route: 'Entregas', link: 'deliveries-history', icone: ' fa-cart-plus' },
+        { title_route: 'Entregadores', link: 'entregadores', icone: ' fa-motorcycle' },
       ]
     }
   }
@@ -30,10 +32,10 @@ export default {
       <div class="flex flex-col gap-8 w-full h-full items-end py-12">
         <ButtonLink :links="routes"/>
       </div>
+      <div class="w-ful">
+        <button class=""></button>
+      </div>
     </div> 
-    <div class="w-ful">
-      <button class="">Logout</button>
-    </div>
   </div>
 
 </template>

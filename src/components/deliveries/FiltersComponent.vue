@@ -22,6 +22,10 @@ export default {
   methods: {
     toggleFilterPanel() {
       this.filterShow = !this.filterShow;
+    },
+    applyFilters(filterText) {
+      this.$emit('applyFilters', filterText); 
+      console.log(filterText)
     }
   }
 }
@@ -33,7 +37,7 @@ export default {
     <div class="flex flex-row w-11/12 ">
       <div class="flex  gap-2 w-44">
         <div class=" input-search ">
-          <input type="text" label="pesquisar" class="bg-opacity-0 bg-transparent focus:outline-none">
+          <input type="text" label="pesquisar" class="bg-opacity-0 bg-transparent focus:outline-none" @input="applyFilters($event.target.value)">
           <button><font-awesome-icon class="text-search-gray  hover:text-light-blue " :icon="faMagnifyingGlass"
               size="xl" /> </button>
         </div>
