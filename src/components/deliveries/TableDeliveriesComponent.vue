@@ -84,6 +84,27 @@ import FilterSelectComponent from './FilterSelectComponent.vue';
       value: "449,99",
       status: "Entregue"
     },
+    {
+      id: 8,
+      name: "Rafael Souza",
+      date: "18/04/2024",
+      value: "599,99",
+      status: "Pendente"
+    },
+    {
+      id: 9,
+      name: "Maria Santos",
+      date: "22/09/2023",
+      value: "799,99",
+      status: "Pendente"
+    },
+    {
+      id: 10,
+      name: "Felipe Oliveira",
+      date: "30/11/2022",
+      value: "449,99",
+      status: "Entregue"
+    },
     
   
       
@@ -108,7 +129,7 @@ import FilterSelectComponent from './FilterSelectComponent.vue';
 
 <template>
   
-  <div class="relative left-80 top-10 bg-cinza">
+  <div class="relative left-80 top-10 ">
     <div class="flex justify-center">
       <header class="containerTabelaTitulo">
         <h3 class="text-center w-full text-xl">Entrega</h3>
@@ -118,10 +139,13 @@ import FilterSelectComponent from './FilterSelectComponent.vue';
         <h3 class="text-center w-full text-xl">Status</h3>
       </header>
     </div>
-    <div class="shadow-header bg-white relative">
-      <div class="flex justify-center flex-col items-center overflow-auto">
-        <div class="question  w-11/12" v-for="delivery in mockDeliveries" :key="delivery.id">
-          <div class="flex py-3 items-center borda-inferior">
+    <div>
+      
+
+        <div class="shadow-header  bg-white relative">
+          <div class="flex  justify-center flex-col items-center overflow-auto">
+            <div class="question   w-11/12" v-for="delivery in mockDeliveries" :key="delivery.id">
+              <div class="flex py-3  items-center borda-inferior">
             <div class="flex justify-around items-center text-cinza font-semibold w-full bg-white">
               <p class="w-1/5 text-center text-lg">#{{ delivery.id }}</p>
               <p class="w-1/5 text-center text-lg">{{ delivery.name }}</p>
@@ -133,6 +157,7 @@ import FilterSelectComponent from './FilterSelectComponent.vue';
           </div>
         </div>
       </div>
+    
       
       <div class="flex justify-center">
         <div class="flex justify-between items-start w-11/12">
@@ -146,6 +171,7 @@ import FilterSelectComponent from './FilterSelectComponent.vue';
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
