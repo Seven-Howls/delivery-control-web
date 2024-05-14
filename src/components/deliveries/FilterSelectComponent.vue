@@ -15,7 +15,7 @@ export default {
 }
 </script>
 <template>
-    <div>
+    <div class="flex flex-col">
         <Label>{{ label }}</Label>
         <select
         class=" ">

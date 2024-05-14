@@ -33,7 +33,7 @@ export default {
       '100': '100%'
     },
     maxHeight: {
-      '300': 'calc(100vh - 260px)',
+      '300': 'calc(100vh - 390px)',
       'screen': '100vh'
     },
     boxShadow: {
