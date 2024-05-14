@@ -11,9 +11,11 @@ export default {
   },
   data() {
     return {
+      label: "Selecione",
       faEllipsisVertical,
       options: [5, 10, 15, 20],
       selectedRows: 5,
+      isOpen: false,
       mockDeliveries: [
         {
           id: 1,
@@ -192,8 +194,27 @@ export default {
   },
 
   methods: {
-
+    toggleDropdown() {
+      this.isOpen = !this.isOpen;
+      if (this.isOpen) {
+        // Adiciona um event listener ao evento de clique no documento
+        document.addEventListener('click', this.closeDropdownOnClickOutside);
+      } else {
+        // Remove o event listener quando o dropdown é fechado
+        document.removeEventListener('click', this.closeDropdownOnClickOutside);
+      }
+    },
+    selectOption(option) {
+      this.label = option + '  Linhas'
+    },
+    closeDropdownOnClickOutside(event) {
+      if (!this.$el.contains(event.target)) {
+        this.isOpen = false;
+        document.removeEventListener('click', this.closeDropdownOnClickOutside);
+      }
+    }
   }
+
 
 
 }
@@ -235,29 +256,32 @@ export default {
       </div>
 
 
-      <div class="flex justify-center py-4">
+      <div class="flex justify-center py-2">
 
 
         <div class="flex justify-between items-start w-11/12">
-          <div class=" bg-cinza-tabela bg-opacity-16 borda-inferior ">
-            <select class="text-gray-text px-2 bg-transparent appearance-none outline-none bg-opacity-16"
-              v-model="selectedRows" id="rows">
-              <option class=" p-10   appearance-none border-none" :value="n" v-for="(n, index) in options" :key="index">{{ n }}</option>
-            </select>
+          <div class="relative">
 
-            <label for="rows" class="text-gray-text">Linhas</label>
+            <button @click="toggleDropdown"
+                    class="bg-cinza-tabela bg-opacity-16 border-b border-gray-text text-gray-text px-2 py-1">
+             {{ label }}
+            </button>
+
+            <div v-if="isOpen" 
+                 class="absolute z-10 bg-white shadow-md  w-32 rounded-lg">
+              <div class=" shadow-header">
+                <template v-for="n in options">
+                  <a href="#" @click="selectOption(n)" class="flex  items-center justify-center   border-gray-text    hover:bg-cinza-tabela">{{ n }}</a>
+                </template>
+              </div>
+            </div>
           </div>
           <div class="">
-            <v-select
-            v-model="favorites"
-            :items="states"
-            hint="Pick your favorite states"
-            label="Select"
-            multiple
-            persistent-hint
-          ></v-select>
-           
+            
           </div>
+
+
+
         </div>
       </div>
     </div>
