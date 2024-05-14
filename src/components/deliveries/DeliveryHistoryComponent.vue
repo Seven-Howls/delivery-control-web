@@ -37,16 +37,15 @@ export default {
 </script>
 
 <template>
-  <div>
-
-    <div class=" w-9/12  h-screen">
-      <FilterSelectComponent/>
-      <TableDeliveriesComponent :deliveries="deliveries"/>
-    </div>
+  <div class="container-deliveries-history">
+    <FiltersComponent/>
+    <TableDeliveriesComponent :deliveries="deliveries"/>
   </div>
 </template>
 
 <style scoped>
 
-
+.container-deliveries-history {
+  @apply h-screen
+}
 </style>

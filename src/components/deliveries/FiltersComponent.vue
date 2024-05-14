@@ -29,7 +29,7 @@ export default {
 
 <template>
 
-  <div class="flex flex-row  w-full">
+  <div class="flex flex-row   w-11/12 relative top-7 ">
     <div class="flex flex-row w-11/12 ">
       <div class="flex  gap-2 w-44">
         <div class=" input-search ">
@@ -53,8 +53,8 @@ export default {
 
   </div>
   
-  <div class="pt-6 " v-if="filterShow">
-    <form @submit.prevent class="flex flex-row justify-between items-end">
+  <div class="mt-10 " v-if="filterShow">
+    <form @submit.prevent class="flex flex-row justify-between items-end w-11/12 ">
       
       <FilterSelectComponent label="Valor"/>
       <FilterSelectComponent label="Ordem"/>
