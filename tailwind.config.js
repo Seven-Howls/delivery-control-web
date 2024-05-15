@@ -34,6 +34,7 @@ export default {
     },
     maxHeight: {
       '300': 'calc(100vh - 390px)',
+      'lg-300': 'calc(100vh - 270px)',
       'screen': '100vh'
     },
     boxShadow: {
@@ -42,6 +43,7 @@ export default {
     extend: {
       inset: {
         '25': '-25px',
+        '15': '3.8rem'
       },
     },
   },

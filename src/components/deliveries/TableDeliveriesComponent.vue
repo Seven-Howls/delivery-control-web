@@ -16,7 +16,7 @@ export default {
       faChevronDown,
       label: "Selecione ",
       faEllipsisVertical,
-      options: [5, 10, 15, 20],
+      options: [10, 15, 20],
       selectedRows: 5,
       isOpen: false,
 
@@ -56,7 +56,7 @@ export default {
 
 <template>
 
-  <div class="w-11/12 2xl:top-16 relative top-16">
+  <div class="w-11/12 2xl:top-16 relative top-15">
     <div class="shadow-header   bg-white">
       <div class="flex h-2/3 items-center justify-center">
         <header class="containerTabelaTitulo ">
@@ -70,7 +70,7 @@ export default {
       <div>
 
       </div>
-      <div class="max-h-300 overflow-y-auto">
+      <div class="2xl:max-h-300 max-h-lg-300 overflow-y-auto">
 
         <div class="flex justify-center flex-col items-center ">
           <div class="  w-full px-9 " v-for="delivery in deliveries" :key="delivery.id">
