@@ -17,7 +17,7 @@ export default {
 
 <template>
   <SideBarComponent/>
-  <div class="ml-[22.5%]">
+  <div class="px-24">
     <router-view />
   </div>
 </template>

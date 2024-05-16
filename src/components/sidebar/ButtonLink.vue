@@ -20,7 +20,7 @@ export default {
 
 <template>
   
-  <div v-for="link in links" :key="link.title_route" class=" w-11/12">
+  <div v-for="link in links" :key="link.title_route" class="">
     <router-link :to="link.link" class="flex gap-4 text-white py-2 px-6 text-2xl rounded-l-full bg-light-blue">
       <i :class="link.icone " ></i>
       {{ link.title_route }}

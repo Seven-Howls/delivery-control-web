@@ -14,6 +14,7 @@ export default {
       'light-blue': '#0871CA',
       'transparent': 'transparent',
       'white': '#FFFFFF',
+      'black': '#000000',
       'cinza': '#707070',
       'search-gray': '#949494',
       'cinza-tabela': '#D9D9D9',
@@ -22,7 +23,7 @@ export default {
       'gray-text': '#B3B3B3',
     },
     borderRadius: {
-      'sidebar': '100px',
+      'sidebar': '50px',
       'full': '9999px',
       'table-header':'7px',
       '7':'7px',

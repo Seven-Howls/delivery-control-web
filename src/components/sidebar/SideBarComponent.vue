@@ -1,20 +1,34 @@
 <script>
-import ButtonAdd from './ButtonAdd.vue';
 import ButtonLink from './ButtonLink.vue';
-
 
 export default {
   name: 'SideBarComponente',
   components: {
-    ButtonAdd,
     ButtonLink
   },
   data() {
     return {
       routes: [
-        { title_route: 'Dashboard', link: 'dashboard', icone: ' fa-table-columns' },
-        { title_route: 'Entregas', link: 'deliveries-history', icone: ' fa-cart-plus' },
-        { title_route: 'Entregadores', link: 'entregadores', icone: ' fa-motorcycle' },
+        { 
+          title_route: 'Dashboard',
+          link: 'dashboard',
+          icone: 'fa-solid fa-chart-line'
+        },
+        {
+          title_route: 'Entregas',
+          link: 'deliveries-history',
+          icone: 'fa-solid fa-truck-ramp-box' 
+        },
+        {
+          title_route: 'Entregadores',
+          link: 'motoboys',
+          icone: 'fa-solid fa-person-biking'
+        },
+        {
+          title_route: 'Colaboradores',
+          link: 'colaboradores',
+          icone: 'fa-solid fa-users'
+        },
       ]
     }
   }
@@ -22,27 +36,24 @@ export default {
 </script>
 <template>
 
+  <div class="container-logo">
+    <img src="../../assets/logo.png" alt="logo" />
+    <h1>Delivery Control</h1>
+  </div>
   <div class="container-sidebar">
-    <div class="container-logo">
-      <img src="../../assets/logo.png" alt="logo" />
-      <h1>Delivery Control</h1>
-    </div>
     <div class="container-nav">
-      
       <div class="flex flex-col gap-8 w-full h-full items-end py-12">
-        <ButtonLink :links="routes"/>
+        <ButtonLink :links="routes" />
       </div>
-      <div class="w-ful">
-        <button class=""></button>
-      </div>
-    </div> 
+    </div>
   </div>
 
 </template>
 
 <style scoped>
 .container-sidebar {
-  @apply fixed left-0 top-0 bg-transparent flex flex-col w-[16%] h-full
+  @apply fixed left-0 top-24 bg-transparent flex flex-col w-[4%] hover:w-[16%] 
+  h-full z-50 transition-all duration-500
 }
 
 .container-logo {
