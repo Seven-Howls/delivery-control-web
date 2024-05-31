@@ -31,7 +31,8 @@ export default {
     },
     opacity: {
       '16': '0.16',
-      '100': '100%'
+      '40': '0.40',
+      '100': '100%',
     },
     maxHeight: {
       '300': 'calc(100vh - 390px)',
@@ -46,6 +47,9 @@ export default {
         '25': '-25px',
         '15': '3.8rem'
       },
+    },
+    backgroundImage: {
+      'custom-gradient': 'linear-gradient(90deg, rgba(61, 123, 176, 0.3) 0%, rgba(135, 172, 203, 0.3) 12%, rgba(36, 107, 167, 0.3) 53%, rgba(6, 87, 156, 0.3) 100%)',
     },
   },
   plugins: [],

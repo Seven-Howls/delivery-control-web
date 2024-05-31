@@ -2,13 +2,15 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import HomeView from "../views/HomeView.vue";
 import DeliveryHistoryView from "../views/DeliveryHistoryView.vue";
-import MotoboysView from "../views/MotoboysView.vue"
+import MotoboysView from "../views/MotoboysView.vue";
+import LoginView from "../views/LoginView.vue";
+import CollaboratorsView from "../views/CollaboratorsView.vue"
 
 const routes = [
   {
-    path: "/",
-    name: "home",
-    component: HomeView
+    path: "/login",
+    name: "login",
+    component: LoginView
   },
   {
     path: "/deliveries-history",
@@ -19,6 +21,11 @@ const routes = [
     path: "/motoboys",
     name: "motoboys-list",
     component: MotoboysView
+  },
+  {
+    path: "/collaborators",
+    name: "collaborators-list",
+    component: CollaboratorsView
   },
 ];
 

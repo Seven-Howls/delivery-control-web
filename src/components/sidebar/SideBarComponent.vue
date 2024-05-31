@@ -11,22 +11,22 @@ export default {
       routes: [
         { 
           title_route: 'Dashboard',
-          link: 'dashboard',
+          link: '/dashboard',
           icone: 'fa-solid fa-chart-line'
         },
         {
           title_route: 'Entregas',
-          link: 'deliveries-history',
+          link: '/deliveries-history',
           icone: 'fa-solid fa-truck-ramp-box' 
         },
         {
           title_route: 'Entregadores',
-          link: 'motoboys',
+          link: '/motoboys',
           icone: 'fa-solid fa-person-biking'
         },
         {
           title_route: 'Colaboradores',
-          link: 'colaboradores',
+          link: '/collaborators',
           icone: 'fa-solid fa-users'
         },
       ]
@@ -53,7 +53,7 @@ export default {
 <style scoped>
 .container-sidebar {
   @apply fixed left-0 top-24 bg-transparent flex flex-col w-[4%] hover:w-[16%] 
-  h-full z-50 transition-all duration-500
+  h-full z-40 transition-all duration-500
 }
 
 .container-logo {

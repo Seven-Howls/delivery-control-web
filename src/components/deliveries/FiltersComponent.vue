@@ -56,7 +56,7 @@ export default {
       </div>
     </div>
     <div>
-      <button class="btn-create">
+      <button @click.prevent="this.$emit('openNewDelivery')" class="btn-create">
         <span><font-awesome-icon class="rotate-45 " :icon="faCircleXmark" /></span>
         <label class=" pl-2">Cadastrar </label>
       </button>

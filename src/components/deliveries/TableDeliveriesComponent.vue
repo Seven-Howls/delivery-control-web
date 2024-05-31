@@ -88,35 +88,7 @@ export default {
       </div>
 
 
-      <div class="flex justify-center py-2">
-
-
-        <div class="flex justify-between items-start w-11/12">
-          <div class="relative">
-
-            <button @click="toggleDropdown"
-                    class="bg-cinza-tabela bg-opacity-16 border-b border-gray-text text-gray-text px-2 py-1">
-             {{ label }}
-             <font-awesome-icon size="xs" :icon="faChevronDown"/>
-            </button>
-
-            <div v-if="isOpen" 
-                 class="absolute z-10 bg-white shadow-md  w-full rounded-lg">
-              <div class=" shadow-header">
-                <template v-for="n in options">
-                  <a href="#" @click="selectOption(n)" class="flex  items-center justify-center   border-gray-text    hover:bg-cinza-tabela">{{ n }}</a>
-                </template>
-              </div>
-            </div>
-          </div>
-          <div class="">
-            
-          </div>
-
-
-
-        </div>
-      </div>
+      
     </div>
   </div>
 
