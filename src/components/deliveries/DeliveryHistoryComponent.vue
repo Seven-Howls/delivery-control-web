@@ -48,7 +48,7 @@ export default {
 </script>
 
 <template>
-  <div class="container-deliveries-history">
+  <div class="">
     <div class="text-3xl font-bold text-background-dark-blue pt-10">
       <h1>Historico de Entregas</h1>
     </div>

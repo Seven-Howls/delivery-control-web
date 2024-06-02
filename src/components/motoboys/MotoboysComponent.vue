@@ -16,6 +16,9 @@ export default {
     }
   },
 
+  mounted() {
+    this.getListMotoboys()
+  },
   methods: {
     toggleNewMotoboy() {
       this.isOpen = !this.isOpen
@@ -40,11 +43,11 @@ export default {
 
 <template>
   <div class="w-full">
-    <header class="px-16 py-10 w-full flex justify-between">
+    <header class="pr-16 py-10 w-full flex justify-between">
       <h1 class="text-3xl font-bold text-background-dark-blue ">Motoboys</h1>
       <button @click.prevent="toggleNewMotoboy" class="flex w-42 px-4 py-1 items-center gap-2 justify-center bg-background-dark-blue text-white rounded-7 hover:bg-light-blue">
         <i class="fa-solid fa-circle-plus text-white"></i>
-        <span>Add Motoboys</span>
+        <span>Novo Motoboys</span>
       </button>
     </header>
     <TableMotoboy :motoboys="motoboysList"/>

@@ -30,6 +30,7 @@ export default {
         
         // Salva o user na Vuex store
         this.$store.dispatch('saveUser', user);
+        // console.log(this.$store.state.user.empresaId);
         localStorage.setItem('authToken', token)
         
         // Redireciona para a tela de historico

@@ -1,52 +1,25 @@
 <script>
 import axios from 'axios';
 export default {
-  name: 'NewCollaborators',
+  name: 'DetailsCollaborators',
 
-  data() {
-    return {
-      types: [],
-      collaborator: {
-        nome: '',
-        cpf: '',
-        celular: '',
-        password: '12345',
-        typeId: '',
-        email: ''
-      }
+  props: {
+    collaborator: {
+      type: Object,
+      required: true
     }
   },
 
-  mounted() {
-    this.getTypesUser()
-  },
-
   methods: {
-    async getTypesUser() {
+    async updateCollaborators() {
       try {
-        const response = await axios.get(`${this.$store.state.BASE_URL}/user/types`, {
+        const response = await axios.put(`${this.$store.state.BASE_URL}/collaborator/update`, collaborator, {
           headers: {
             'Authorization': `${localStorage.getItem('authToken')}`
           }
         })
-        this.types = response.data
-        console.log(this.types);
       } catch(err) {
-        console.log(err);
-      }
-    },
 
-    async createCollaborators() {
-      try {
-        const response = await axios.post(`${this.$store.state.BASE_URL}/collaboratos/signup`,this.collaborator, {
-          headers: {
-            'Authorization': `${localStorage.getItem('authToken')}`
-          }
-        })
-        console.log(response.data);
-        this.$emit('close')
-      } catch(err) {
-        console.log(err);
       }
     }
   }
@@ -60,7 +33,7 @@ export default {
     <div
       class="fixed left-[50%] top-24 rounded-tl-sidebar p-8 right-0 bg-white h-full border transition-all duration-300">
       <div class="flex justify-between">
-        <h1 class="text-xl font-bold text-background-dark-blue">Novo Colaborador</h1>
+        <h1 class="text-xl font-bold text-background-dark-blue">Detales Colaborador</h1>
         <button @click.prevent="this.$emit('close')">
           <i class="fa-solid fa-xmark text-3xl hover:text-error text-background-dark-blue"></i>
         </button>
@@ -76,7 +49,7 @@ export default {
           </div>
           <div class="flex flex-col gap-1">
             <label class="text-background-dark-blue text-xl font-bold">CPF</label>
-            <input type="text" v-model="collaborator.cpf"
+            <input type="text" v-model="collaborator.cpf" readonly
               class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza" />
           </div>
           <div class="flex flex-col gap-1">
@@ -100,7 +73,7 @@ export default {
 
         <div class="flex justify-end py-12 space-x-4">
           <button @click.prevent="cancelarCadastro" class="bg-error text-white px-4 py-2 rounded-7">Cancelar</button>
-          <button @click.prevent="createCollaborators"
+          <button @click.prevent="updateCollaborators"
             class="bg-confirmation text-white px-4 py-2 rounded-7 ">Salvar</button>
         </div>
       </div>

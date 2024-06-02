@@ -1,14 +1,16 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import FiltersComponent from '../deliveries/FiltersComponent.vue'
+import DetailsMotoboy from './DetailsMotoboy.vue'
+
 export default {
   name: 'TableMotoboy',
   components: {
     FontAwesomeIcon,
     FiltersComponent,
     faChevronDown,
+    DetailsMotoboy
   },
   data() {
     return {
@@ -18,27 +20,7 @@ export default {
       options: [10, 15, 20],
       selectedRows: 5,
       isOpen: false,
-
-      motoboys_: {
-        0: {
-          nome: 'Joao',
-          cpf: '097.032.016-13',
-          celular: '(32) 99816-2682',
-          media_entrega: 26
-        },
-        1: {
-          nome: 'Pedro',
-          cpf: '970.302.610-31',
-          celular: '(32) 99816-9999',
-          media_entrega: 30
-        },
-        2: {
-          nome: 'Luiz',
-          cpf: '999.999.999-99',
-          celular: '(32) 99899-9999',
-          media_entrega: 99
-        },
-      }
+      motoboySelected: {}
     }
   },
 
@@ -50,6 +32,9 @@ export default {
   },
 
   methods: {
+    formatCpf(cpf) {
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    },
     toggleDropdown() {
       this.isOpen = !this.isOpen;
       if (this.isOpen) {
@@ -66,18 +51,25 @@ export default {
         this.isOpen = false;
         document.removeEventListener('click', this.closeDropdownOnClickOutside);
       }
+    },
+
+    openDetails(motoboy) {
+      this.motoboySelected = motoboy
+      this.isOpen = true
+    },
+    closeDetails() {
+      this.motoboySelected = {}
+      this.isOpen = false
     }
   }
 }
-
 </script>
 
 <template>
-
   <div class="w-11/12 2xl:top-16 relative top-15">
-    <div class="shadow-header   bg-white">
+    <div class="shadow-header bg-white">
       <div class="flex h-2/3 items-center justify-center">
-        <header class="containerTabelaTitulo ">
+        <header class="containerTabelaTitulo">
           <h3 class="text-center w-full text-base 2xl:text-xl">Nome</h3>
           <h3 class="text-center w-full text-base 2xl:text-xl">CPF</h3>
           <h3 class="text-center w-full text-base 2xl:text-xl">Celular</h3>
@@ -85,36 +77,27 @@ export default {
         </header>
       </div>
       <div>
-
       </div>
-      <div class="2xl:max-h-300 max-h-lg-300 overflow-y-auto">
-
+      <div class="2xl:max-h-300 max-h-lg-300 overflow-y-auto pb-6">
         <div class="flex justify-center flex-col items-center ">
-          <div class="  w-full px-9 " v-for="motoboy in motoboys" :key="motoboy.id">
-            <div class="flex items-center borda-inferior my-2">
-              <div class="flex  justify-around items-center text-cinza font-semibold w-full bg-white">
-                <p class="w-full  text-center text-sm 2xl:text-lg">#{{ motoboy.nome }}</p>
-                <p class="w-full text-center text-sm 2xl:text-lg">{{ motoboy.cpf }}</p>
-                <p class="w-full text-center text-sm 2xl:text-lg">{{ motoboy.celular }}</p>
-                <p class="w-full text-center text-sm 2xl:text-lg">R$ 0 </p>
-              </div>
+          <div class="w-full px-9" v-for="motoboy in motoboys" :key="motoboy.id">
+            <div class="flex items-center borda-inferior">
+              <button @click.prevent="openDetails(motoboy.usuario)"
+                class="flex justify-around items-center py-2 text-cinza font-semibold w-full bg-white hover:font-bold hover:bg-cinza-tabela">
+                <p class="w-full text-center text-sm 2xl:text-lg">{{ motoboy.usuario.nome }}</p>
+                <p class="w-full text-center text-sm 2xl:text-lg">{{ formatCpf(motoboy.usuario.cpf) }}</p>
+                <p class="w-full text-center text-sm 2xl:text-lg">{{ motoboy.usuario.celular }}</p>
+                <p class="w-full text-center text-sm 2xl:text-lg">R$ 0</p>
+              </button>
               <div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-      <div class="flex justify-center py-2">
-
-
-        
-      </div>
     </div>
+    <DetailsMotoboy v-if="isOpen" :motoboy="motoboySelected" @close="closeDetails" />
   </div>
-
-
 </template>
 
 <style scoped>
@@ -122,13 +105,9 @@ export default {
   @apply flex w-11/12 rounded-table-header justify-around text-center bg-light-blue py-2 relative -top-5 z-0 text-white shadow-header;
 }
 
-
-
 .borda-inferior {
   border-bottom: 2px solid #d9d9d9;
 }
-
-
 
 select {
   border: none !important;
