@@ -27,7 +27,8 @@ export default {
       'full': '9999px',
       'table-header':'7px',
       '7':'7px',
-      'search-input': '10px 10px 0px 0px;'
+      'search-input': '10px 10px 0px 0px;',
+      'update-input': '10px;'
     },
     opacity: {
       '16': '0.16',
