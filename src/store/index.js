@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    BASE_URL: 'http://54.160.219.138:3000/api/v1',
+    BASE_URL: 'http://34.228.19.155:3000/api/v1',
     user: {},
     taxas: [],
     motoboys: [],

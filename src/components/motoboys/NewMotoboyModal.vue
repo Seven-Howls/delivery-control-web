@@ -21,22 +21,30 @@ export default {
   methods: {
     async submitForm() {
       this.motoboy.cpf = this.cleanCpf(this.motoboy.cpf);
-    
+      this.motoboy.celular = this.cleanPhone(this.motoboy.celular);
+
       if (this.validateEmail(this.motoboy.email)) {
         try {
           const data = {
-            userData: this.motoboy 
+            userData: {
+              nome: this.motoboy.nome,
+              cpf: this.motoboy.cpf,
+              email: this.motoboy.email,
+              password: this.motoboy.cpf,
+              celular: this.motoboy.celular,
+            }
           }
           const response = await axios.post(`${this.$store.state.BASE_URL}/motoboys/signup`, data, {
             headers: {
               'Authorization': `${localStorage.getItem('authToken')}`
             }
           });
+          this.$emit('close')
           console.log(response.data);
-        } catch(err) {
+        } catch (err) {
           console.log(err);
         }
-       
+
       }
 
     },
@@ -54,6 +62,9 @@ export default {
     },
     cleanCpf(cpf) {
       return cpf.replace(/\D/g, '');
+    },
+    cleanPhone(phone) {
+      return phone.replace(/\D/g, '');
     }
   }
 }
@@ -78,18 +89,18 @@ export default {
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-semibold mb-2">CPF</label>
-            <input type="text" v-model="motoboy.cpf" @blur="formatCpfInput"
+            <input type="text" v-model="motoboy.cpf" v-mask="'###.###.###-##'"
               class="w-full p-3 border  focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-update-input" />
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-semibold mb-2">E-mail</label>
             <input type="email" v-model="motoboy.email"
               class="w-full p-3 border  focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-update-input" />
-              <p v-if="!validateEmail(motoboy.email)" class="text-error mt-1">Por favor, insira um e-mail válido.</p>
+            <!-- <p v-if="!validateEmail(motoboy.email)" class="text-error mt-1">Por favor, insira um e-mail válido.</p> -->
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-semibold mb-2">Telefone</label>
-            <input type="text" v-model="motoboy.celular"
+            <input type="text" v-model="motoboy.celular" v-mask="'#####-####'"
               class="w-full p-3 border  focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-update-input" />
           </div>
         </div>
