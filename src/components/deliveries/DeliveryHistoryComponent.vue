@@ -15,11 +15,13 @@ export default {
     return {
       deliveries: [],
       isOpenNewDelivery: false,
+      taxas: [],
     }
   },
 
   mounted() {
-    this.getDeliveries()
+    this.getDeliveries();
+    this.getDeliveriesFee()
   },
 
   methods: {
@@ -27,9 +29,10 @@ export default {
       this.isOpenNewDelivery = !this.isOpenNewDelivery
       console.log('to aqui');
     },
+
     async getDeliveries() {
-      try{
-        const response = await axios.get(`${this.$store.state.BASE_URL}/deliveries/history-manager/`,{
+      try {
+        const response = await axios.get(`${this.$store.state.BASE_URL}/deliveries/history-manager?page=1&perPage=10`, {
           headers: {
             'Authorization': `${localStorage.getItem('authToken')}`
           }
@@ -37,13 +40,31 @@ export default {
 
         this.deliveries = response.data
         console.log(this.deliveries);
-      } catch(err) {
+      } catch (err) {
         console.error(err);
       }
     },
-    
+
+    async getDeliveriesFee() {
+      try {
+        const response = await axios.get(`${this.$store.state.BASE_URL}/deliveries-fee/`, {
+          headers: {
+            'Authorization': `${localStorage.getItem('authToken')}`
+          }
+        })
+        this.taxas = response.data
+        this.$store.dispatch('saveTaxas', this.taxas)
+        console.log(this.taxas);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    updateDeliveries(newDeliveries) {
+      this.deliveries = newDeliveries;
     }
   }
+}
 
 </script>
 
@@ -52,9 +73,10 @@ export default {
     <div class="text-3xl font-bold text-background-dark-blue pt-10">
       <h1>Historico de Entregas</h1>
     </div>
-    <FiltersComponent @applyFilters="filterDeliveries" @openNewDelivery="toggleModal"/>
-    <TableDeliveriesComponent :deliveries="deliveries" />
-    <NewDelivery v-if="isOpenNewDelivery == true" @closePopup="toggleModal"/>
+    <FiltersComponent @applyFilters="filterDeliveries" @openNewDelivery="toggleModal" />
+    <TableDeliveriesComponent :deliveries="deliveries" @update:deliveries="updateDeliveries" />
+    <NewDelivery :taxas="taxas" :motoboys="motoboys" :payment_method="payment_method" v-if="isOpenNewDelivery == true"
+      @closePopup="toggleModal" />
   </div>
 </template>
 

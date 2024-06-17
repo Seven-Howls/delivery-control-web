@@ -2,10 +2,18 @@
 import axios from 'axios';
 export default {
   name: 'DetailsMotoboy',
+  data() {
+    return {
 
+    }
+  },
   props: {
     motoboy: {
       type: Object,
+      required: true
+    },
+    motoboyId: {
+      type: String,
       required: true
     }
   },
@@ -16,7 +24,7 @@ export default {
     },
     async updateMotoboy() {
       try {
-        const response = await axios.put(`${this.$store.state.BASE_URL}/motoboy/update/`, this.motoboy, {
+        const response = await axios.put(`${this.$store.state.BASE_URL}/motoboys/update/${this.motoboyId}`, this.motoboy, {
           headers: {
             'Authorization': `${localStorage.getItem('authToken')}`
           }
@@ -66,7 +74,7 @@ export default {
         <div class="flex justify-end space-x-4">
           <button @click.prevent="this.$emit('close')"
             class="bg-error text-white px-4 py-2 rounded-lg hover:bg-error/40">Fechar</button>
-          <button @click.prevent="updateMotoboy"
+          <button @click.prevent="updateMotoboy()"
             class="bg-confirmation text-white px-4 py-2 rounded-lg hover:bg-confirmation/40">Salvar</button>
         </div>
       </div>

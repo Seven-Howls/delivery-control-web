@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       delivery: {
-        statusId: 5,
+        statusId: 22,
         motoboyId: "",
         commandId: 0,
         deliveryFeeId: "",
@@ -15,14 +15,16 @@ export default {
       },
       taxas: [],
       motoboys: [],
-      payment_method: []
+      payment_method: [],
+      status: []
       
     }
   },
   mounted() {
-    this.getDeliveriesFee()
-    this.getMotoboys()
-    this.getPaymentMethod()
+    this.taxas = this.$store.state.taxas;
+    this.motoboys = this.$store.state.motoboys;
+    this.payment_method = this.$store.state.payment_method;
+    this.status = this.$store.state.status;
   },
   methods: {
     async getDeliveriesFee() {
@@ -33,38 +35,13 @@ export default {
           }
         })
         this.taxas = response.data
+        this.$store.dispatch('saveTaxas', this.taxas)
         console.log(this.taxas);
       } catch(err) {
         console.log(err);
       }
     },
-    async getPaymentMethod() {
-      try {
-        const response = await axios.get(`${this.$store.state.BASE_URL}/payment-method`, {
-          headers: {
-            'Authorization': `${localStorage.getItem('authToken')}`
-          }
-        })
-        this.payment_method = response.data
-        console.log(this.payment_method);
-      } catch(err) {
-        console.log(err);
-      }
-    },
-
-    async getMotoboys() {
-      try {
-        const response = await axios.get(`${this.$store.state.BASE_URL}/motoboys/find-all`, {
-          headers: {
-            'Authorization': `${localStorage.getItem('authToken')}`
-          }
-        })
-        this.motoboys = response.data
-        console.log(this.motoboys);
-      } catch(err) {
-        console.log(err);
-      }
-    },
+    
     async createNewDelivery() {
       try {
         const response = await axios.post(`${this.$store.state.BASE_URL}/deliveries/create`, this.delivery, {
@@ -107,7 +84,7 @@ export default {
         <select class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza"
           v-model="delivery.motoboyId">
           <option value=""></option>
-          <option v-for="motoboy in motoboys" :key="motoboy.id" :value="motoboy.id">{{ motoboy.usuario.nome }}</option>
+          <option v-for="motoboy in motoboys.motoboys" :key="motoboy.id" :value="motoboy.id">{{ motoboy.usuario.nome }}</option>
         </select>
       </div>
 

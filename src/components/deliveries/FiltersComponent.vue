@@ -5,7 +5,7 @@ import { faMagnifyingGlass, faFilter } from '@fortawesome/free-solid-svg-icons'
 import FilterSelectComponent from './FilterSelectComponent.vue';
 
 export default {
-  
+
   components: {
     FontAwesomeIcon,
     FilterSelectComponent,
@@ -24,7 +24,7 @@ export default {
       this.filterShow = !this.filterShow;
     },
     applyFilters(filterText) {
-      this.$emit('applyFilters', filterText); 
+      this.$emit('applyFilters', filterText);
       console.log(filterText)
     }
   }
@@ -35,25 +35,19 @@ export default {
 
   <div class="flex flex-row   w-11/12 h-10 relative top-7 ">
     <div class="flex flex-row w-11/12 ">
-      <div class="flex  gap-2 w-44">
-        <div class=" input-search ">
-          <input type="text" label="pesquisar" class="bg-opacity-0 bg-transparent focus:outline-none" @input="applyFilters($event.target.value)">
-          <button><font-awesome-icon class="text-search-gray  hover:text-light-blue " :icon="faMagnifyingGlass"
-              size="xl" /> </button>
-              
+      <!-- <div class="flex">
+        <div class="flex gap-6">
+          <button @click.prevent="this.$emit('filtrarMaiorValor')" class=" px-4 py-1 bg-warning text-white font-bold text-xl rounded-7">
+            <label class=" ">Maior Valor</label>
+          </button>
+          <button @click.prevent="this.$emit('filtrarCrescente')" class="px-4 py-1 bg-confirmation text-white font-bold text-xl rounded-7">
+            <label class=" ">Ordem Crescente</label>
+          </button>
+          <button @click.prevent="this.$emit('filtrarDescrescente')" class="px-4 py-1 bg-text-dark text-white font-bold text-xl rounded-7">
+            <label class=" ">Ordem Decrescente</label>
+          </button>
         </div>
-        
-        <div>
-          <button @click="toggleFilterPanel"><font-awesome-icon class=" btn-filter" :icon="faFilter"
-              size="lg" /></button>
-        </div>
-        <div>
-          <button class="btn-clear-filter h-full w-40">
-        <span><font-awesome-icon class="rotate-45 " :icon="faCircleXmark" /></span>
-        <label class=" ">Limpar</label>
-      </button>
-        </div>
-      </div>
+      </div> -->
     </div>
     <div>
       <button @click.prevent="this.$emit('openNewDelivery')" class="btn-create">
@@ -64,8 +58,8 @@ export default {
     </div>
 
   </div>
- 
-  
+
+
 </template>
 <style scoped>
 .input-search {
@@ -85,7 +79,6 @@ export default {
 }
 
 .btn-clear-filter {
-  @apply bg-error hover:bg-light-blue text-white font-bold   rounded-7 flex justify-center items-center
+  @apply bg-error hover:bg-light-blue text-white font-bold rounded-7 flex justify-center items-center
 }
-
 </style>

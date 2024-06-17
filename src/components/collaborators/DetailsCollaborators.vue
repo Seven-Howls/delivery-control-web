@@ -2,7 +2,11 @@
 import axios from 'axios';
 export default {
   name: 'DetailsCollaborators',
-
+  data() {
+    return {
+      types: []
+    }
+  },
   props: {
     collaborator: {
       type: Object,
@@ -10,16 +14,35 @@ export default {
     }
   },
 
+  mounted() {
+    this.getTypesUser()
+    console.log(this.collaborator);
+  },
+
   methods: {
-    async updateCollaborators() {
+    async getTypesUser() {
       try {
-        const response = await axios.put(`${this.$store.state.BASE_URL}/collaborator/update`, collaborator, {
+        const response = await axios.get(`${this.$store.state.BASE_URL}/user-type/all`, {
           headers: {
             'Authorization': `${localStorage.getItem('authToken')}`
           }
         })
+        this.types = response.data
+        console.log(this.types);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async updateCollaborators() {
+      try {
+        const response = await axios.put(`${this.$store.state.BASE_URL}/collaborator/update/${this.collaborator.id}`, this.collaborator.usuarioColaborador, {
+          headers: {
+            'Authorization': `${localStorage.getItem('authToken')}`
+          }
+        })
+        console.log(response.data);
       } catch(err) {
-
+        console.log(err);
       }
     }
   }
@@ -45,28 +68,28 @@ export default {
           <div class="col-span-2 flex flex-col gap-1">
             <label class="text-background-dark-blue text-xl font-bold">Nome</label>
             <input type="text" class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza"
-              v-model="collaborator.nome" />
+              v-model="collaborator.usuarioColaborador.nome" />
           </div>
           <div class="flex flex-col gap-1">
             <label class="text-background-dark-blue text-xl font-bold">CPF</label>
-            <input type="text" v-model="collaborator.cpf" readonly
+            <input type="text" v-model="collaborator.usuarioColaborador.cpf" readonly
               class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza" />
           </div>
           <div class="flex flex-col gap-1">
             <label class="text-background-dark-blue text-xl font-bold">Telefone</label>
-            <input type="phone" v-model="collaborator.celular"
+            <input type="phone" v-model="collaborator.usuarioColaborador.celular"
               class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza" />
           </div>
           <div class="col-span-2 flex flex-col gap-1">
             <label class="text-background-dark-blue text-xl font-bold">E-mail</label>
-            <input type="email" v-model="collaborator.email"
+            <input type="email" v-model="collaborator.usuarioColaborador.email"
               class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza" />
           </div>
           <div class="col-span-2 flex flex-col gap-1">
             <label class="text-background-dark-blue text-xl font-bold">Tipo</label>
-            <select v-model="collaborator.typeId"
+            <select v-model="collaborator.tipoId"
               class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza">
-              <option v-for="type in types" :key="type.id" :value="type.id">{{ type.name }}</option>
+              <option v-for="userType in types" :key="userType.id" :value="userType.id">{{ userType.nome }}</option>
             </select>
           </div>
         </div>

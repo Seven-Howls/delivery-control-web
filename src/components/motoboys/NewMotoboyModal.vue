@@ -1,7 +1,12 @@
 <script>
 import axios from 'axios';
+import { mask } from 'vue-the-mask';
+
 export default {
   name: 'NewMotoboyModal',
+  directives: {
+    mask
+  },
   data() {
     return {
       motoboy: {
@@ -13,20 +18,18 @@ export default {
       }
     }
   },
-
+  
   methods: {
     async createMotoboy() {
       try {
         const data = {
-          token: localStorage.getItem('authToken'),
-          empresaId: this.$store.state.user.empresaId,
-          userData: this.motoboy
+          userData: this.motoboy 
         }
         const response = await axios.post(`${this.$store.state.BASE_URL}/motoboys/signup`, data, {
           headers: {
             'Authorization': `${localStorage.getItem('authToken')}`
           }
-        })
+        });
         console.log(response.data);
       } catch(err) {
         console.log(err);
@@ -56,7 +59,7 @@ export default {
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-semibold mb-2">CPF</label>
-            <input type="text" v-model="motoboy.cpf"
+            <input type="text" v-model="motoboy.cpf" 
               class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
           <div>
@@ -66,13 +69,13 @@ export default {
           </div>
           <div>
             <label class="block text-gray-700 text-lg font-semibold mb-2">Telefone</label>
-            <input type="phone" v-model="motoboy.celular"
+            <input type="text" v-model="motoboy.celular"
               class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
         </div>
         <!-- Botões de ação -->
         <div class="flex justify-end space-x-4">
-          <button @click.prevent="cancelarCadastro"
+          <button @click.prevent="this.$emit('close')"
             class="bg-error text-white px-4 py-2 rounded-lg hover:bg-error/40">Cancelar</button>
           <button @click.prevent="createMotoboy"
             class="bg-confirmation text-white px-4 py-2 rounded-lg hover:bg-confirmation/40">Salvar</button>

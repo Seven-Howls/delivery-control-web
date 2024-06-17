@@ -80,9 +80,9 @@ export default {
       </div>
       <div class="2xl:max-h-300 max-h-lg-300 overflow-y-auto pb-6">
         <div class="flex justify-center flex-col items-center ">
-          <div class="w-full px-9" v-for="motoboy in motoboys" :key="motoboy.id">
+          <div class="w-full px-9" v-for="motoboy in motoboys.motoboys" :key="motoboy.id">
             <div class="flex items-center borda-inferior">
-              <button @click.prevent="openDetails(motoboy.usuario)"
+              <button @click.prevent="openDetails(motoboy)"
                 class="flex justify-around items-center py-2 text-cinza font-semibold w-full bg-white hover:font-bold hover:bg-cinza-tabela">
                 <p class="w-full text-center text-sm 2xl:text-lg">{{ motoboy.usuario.nome }}</p>
                 <p class="w-full text-center text-sm 2xl:text-lg">{{ formatCpf(motoboy.usuario.cpf) }}</p>
@@ -96,7 +96,7 @@ export default {
         </div>
       </div>
     </div>
-    <DetailsMotoboy v-if="isOpen" :motoboy="motoboySelected" @close="closeDetails" />
+    <DetailsMotoboy v-if="isOpen" :motoboy="motoboySelected.usuario" :motoboy-id="motoboySelected.id" @close="closeDetails" />
   </div>
 </template>
 

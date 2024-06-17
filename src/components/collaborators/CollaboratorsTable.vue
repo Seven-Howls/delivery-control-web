@@ -62,7 +62,7 @@ export default {
         <div class="flex justify-center flex-col items-center ">
           <div class="w-full px-9 " v-for="collaborator in collaborators" :key="collaborator.id">
             <div class="flex items-center borda-inferior">
-              <button @click.prevent="openDetails(collaborator.usuarioColaborador)"
+              <button @click.prevent="openDetails(collaborator)"
                 class="flex justify-around items-center py-2 text-cinza font-semibold w-full bg-white hover:font-bold hover:bg-cinza-tabela">
                 <p class="w-full  text-center text-sm 2xl:text-lg">{{ collaborator.usuarioColaborador.nome }}</p>
                 <p class="w-full text-center text-sm 2xl:text-lg">{{ formatCpf(collaborator.usuarioColaborador.cpf) }}
