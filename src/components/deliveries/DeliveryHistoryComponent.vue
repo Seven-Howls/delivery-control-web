@@ -74,9 +74,9 @@ export default {
       <h1>Historico de Entregas</h1>
     </div>
     <FiltersComponent @applyFilters="filterDeliveries" @openNewDelivery="toggleModal" />
-    <TableDeliveriesComponent :deliveries="deliveries" @update:deliveries="updateDeliveries" />
+    <TableDeliveriesComponent :deliveries="deliveries" @update:deliveries="updateDeliveries" @atualizarTabela="getDeliveries" />
     <NewDelivery :taxas="taxas" :motoboys="motoboys" :payment_method="payment_method" v-if="isOpenNewDelivery == true"
-      @closePopup="toggleModal" />
+      @closePopup="toggleModal" @atualizarTabela="getDeliveries" />
   </div>
 </template>
 

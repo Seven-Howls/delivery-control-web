@@ -37,6 +37,9 @@ export default {
       }
     },
 
+    updateMotoboy(newMotoboy) {
+      this.motoboysList = newMotoboy;
+    }
   }
 }
 
@@ -51,9 +54,9 @@ export default {
         <span class="ml-2">Adiconar Motoboy</span>
       </button>
     </header>
-    <TableMotoboy :motoboys="motoboysList"/>
+    <TableMotoboy :motoboys="motoboysList" @atualizarTabela="getListMotoboys" @update:motoboy="updateMotoboy"/>
 
-    <NewMotoboyModal class="" v-if="isOpen === true" @close="toggleNewMotoboy"></NewMotoboyModal>
+    <NewMotoboyModal class="" v-if="isOpen === true" @close="toggleNewMotoboy" @atualizarTabela="getListMotoboys"></NewMotoboyModal>
   </div>
 </template>
 

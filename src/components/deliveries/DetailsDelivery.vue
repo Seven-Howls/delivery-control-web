@@ -32,6 +32,7 @@ export default {
           }
         })
         console.log(response.data);
+        this.$emit('atualizarTabela')
         this.$emit('closePopup')
       } catch(err) {  
         console.log(err);

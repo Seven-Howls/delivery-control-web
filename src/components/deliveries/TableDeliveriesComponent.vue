@@ -127,7 +127,7 @@ export default {
         <button @click="goToNextPage" class="btn-pagination">Próxima</button>
       </div>
     </div>
-    <DetailsDelivery :delivery="deliverySelected" v-if="detailsOpen === true" @closePopup="closeDetails" />
+    <DetailsDelivery :delivery="deliverySelected" v-if="detailsOpen === true" @closePopup="closeDetails" @atualizarTabela="atualizarTabela" />
   </div>
 </template>
 

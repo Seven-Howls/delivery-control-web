@@ -39,8 +39,9 @@ export default {
               'Authorization': `${localStorage.getItem('authToken')}`
             }
           });
-          this.$emit('close')
           console.log(response.data);
+          this.$emit('atualizarTabela')
+          this.$emit('close')
         } catch (err) {
           console.log(err);
         }

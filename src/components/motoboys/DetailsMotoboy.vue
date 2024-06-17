@@ -36,6 +36,7 @@ export default {
           }
         );
         console.log(response.data);
+        this.$emit('atualizarTabela')
         this.$emit('close');
       } catch (err) {
         console.log(err);

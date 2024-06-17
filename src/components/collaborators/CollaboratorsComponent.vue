@@ -36,6 +36,9 @@ export default {
       } catch(err) {
         console.log(err);
       }
+    },
+    updateCollaborators(newCololaborators) {
+      this.collaboratorsList = newCololaborators;
     }
   }
 }
@@ -52,8 +55,8 @@ export default {
         <span class="ml-2">Adiconar Colaborador</span>
       </button>
     </div>
-    <CollaboratorsTable :collaborators="collaboratorsList"/>
-    <NewCollaborators v-if="isOpen === true" @close="toggleModal"/>
+    <CollaboratorsTable :collaborators="collaboratorsList" @atualizarTabela="getCollaborators" @update:collaborator="updateCollaborators"/>
+    <NewCollaborators v-if="isOpen === true" @close="toggleModal" @atualizarTabela="getCollaborators"/>
   </div>
 
 

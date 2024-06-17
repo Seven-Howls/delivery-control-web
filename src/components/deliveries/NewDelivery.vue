@@ -13,7 +13,7 @@ export default {
         motoboyId: "",
         commandId: '',
         deliveryFeeId: "",
-        serviceFee: '',
+        serviceFee: 0,
         productValue: '',
         paymentMethodId: ""
       },
@@ -67,6 +67,7 @@ export default {
           }
         })
         console.log(response.data);
+        this.$emit('atualizarTabela')
         this.$emit('closePopup')
       } catch (err) {
         console.log(err);
@@ -109,7 +110,7 @@ export default {
       <!-- Campo Valor da Entrega -->
       <div class="flex flex-col gap-1 w-full mb-4">
         <label class="text-background-dark-blue text-xl font-bold">Valor do Pedido</label>
-        <input type="text" v-mask="'R$ ###.##'" placeholder="R$ 000,00"
+        <input type="number"
           class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza"
           v-model="delivery.productValue" />
       </div>
@@ -127,7 +128,7 @@ export default {
       <!-- Campo Valor da taxa de serviço -->
       <div class="flex flex-col gap-1 w-full mb-4">
         <label class="text-background-dark-blue text-xl">Taxa de serviço</label>
-        <input type="text" v-mask="'R$ ###.##'" placeholder="R$ 000,00"
+        <input type="number"
           class="border-2 border-search-gray p-2 text-xl rounded-7 outline-none focus:border-cinza"
           v-model="delivery.serviceFee" />
 

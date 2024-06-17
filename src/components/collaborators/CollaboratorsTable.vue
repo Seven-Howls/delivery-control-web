@@ -9,7 +9,9 @@ export default {
   data() {
     return {
       collaboratorSelected: {},
-      isOpen: false
+      isOpen: false,
+      currentPage: 1,
+      url: `${this.$store.state.BASE_URL}/collaborator/findall`
     }
   },
 
@@ -37,6 +39,30 @@ export default {
     closeDetails() {
       this.collaboratorSelected = {}
       this.isOpen = false
+    },
+
+    async fetchDeliveries(page) {
+      const url = `${this.url}?page=${page}&perPage=${this.selectedRows}`;
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            'Authorization': `${localStorage.getItem('authToken')}`
+          }
+        });
+        this.$emit('update:collaborator', response.data);
+      } catch (error) {
+        console.error("Error fetching deliveries:", error);
+      }
+    },
+    async goToNextPage() {
+      this.currentPage++;
+      await this.fetchDeliveries(this.currentPage);
+    },
+    async goToPrevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+        await this.fetchDeliveries(this.currentPage);
+      }
     }
   }
 }
@@ -74,9 +100,14 @@ export default {
           </div>
         </div>
       </div>
-
+      <div class="flex justify-between py-8 px-8">
+        <button @click="goToPrevPage" :disabled="currentPage === 1" class="btn-pagination">Anterior</button>
+        <span>Página {{ currentPage }}</span>
+        <button @click="goToNextPage" class="btn-pagination">Próxima</button>
+      </div>
     </div>
-    <DetailsCollaborators v-if="isOpen === true" :collaborator="collaboratorSelected" @close="closeDetails" />
+    <DetailsCollaborators v-if="isOpen === true" :collaborator="collaboratorSelected" @close="closeDetails"
+      @atualizarTabela="this.$emit('atualizarTabela')" />
   </div>
 
 
@@ -93,7 +124,10 @@ export default {
   border-bottom: 2px solid #d9d9d9;
 }
 
-
+.btn-pagination {
+  @apply bg-background-dark-blue hover:bg-light-blue text-white font-bold py-2 px-4 rounded-7;
+  disabled: opacity-50;
+}
 
 select {
   border: none !important;

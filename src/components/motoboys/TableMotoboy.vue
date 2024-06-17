@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faEllipsisVertical, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import FiltersComponent from '../deliveries/FiltersComponent.vue'
 import DetailsMotoboy from './DetailsMotoboy.vue'
-
+import axios from 'axios'
 export default {
   name: 'TableMotoboy',
   components: {
@@ -20,7 +20,9 @@ export default {
       options: [10, 15, 20],
       selectedRows: 5,
       isOpen: false,
-      motoboySelected: {}
+      motoboySelected: {},
+      currentPage: 1,
+      url: `${this.$store.state.BASE_URL}/motoboys/find-all`
     }
   },
 
@@ -60,6 +62,29 @@ export default {
     closeDetails() {
       this.motoboySelected = {}
       this.isOpen = false
+    },
+    async fetchDeliveries(page) {
+      const url = `${this.url}?page=${page}&perPage=${this.selectedRows}`;
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            'Authorization': `${localStorage.getItem('authToken')}`
+          }
+        });
+        this.$emit('update:motoboy', response.data);
+      } catch (error) {
+        console.error("Error fetching deliveries:", error);
+      }
+    },
+    async goToNextPage() {
+      this.currentPage++;
+      await this.fetchDeliveries(this.currentPage);
+    },
+    async goToPrevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+        await this.fetchDeliveries(this.currentPage);
+      }
     }
   }
 }
@@ -95,8 +120,14 @@ export default {
           </div>
         </div>
       </div>
+      <div class="flex justify-between py-8 px-8">
+        <button @click="goToPrevPage" :disabled="currentPage === 1" class="btn-pagination">Anterior</button>
+        <span>Página {{ currentPage }}</span>
+        <button @click="goToNextPage" class="btn-pagination">Próxima</button>
+      </div>
     </div>
-    <DetailsMotoboy v-if="isOpen" :motoboy="motoboySelected.usuario" :motoboy-id="motoboySelected.id" @close="closeDetails" />
+    <DetailsMotoboy v-if="isOpen" :motoboy="motoboySelected.usuario" :motoboy-id="motoboySelected.id"
+      @close="closeDetails" @atualizarTabela="atualizarTabela" />
   </div>
 </template>
 
@@ -108,7 +139,10 @@ export default {
 .borda-inferior {
   border-bottom: 2px solid #d9d9d9;
 }
-
+.btn-pagination {
+  @apply bg-background-dark-blue hover:bg-light-blue text-white font-bold py-2 px-4 rounded-7;
+  disabled: opacity-50;
+}
 select {
   border: none !important;
 }
