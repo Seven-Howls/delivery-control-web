@@ -57,7 +57,7 @@ export default {
       <div>
 
       </div>
-      <div class="2xl:max-h-300 max-h-lg-300 overflow-y-auto">
+      <div class="2xl:max-h-300 max-h-lg-300 pb-4 overflow-y-auto">
 
         <div class="flex justify-center flex-col items-center ">
           <div class="w-full px-9 " v-for="collaborator in collaborators" :key="collaborator.id">

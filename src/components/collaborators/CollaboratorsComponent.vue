@@ -47,9 +47,9 @@ export default {
   <div class="">
     <div class=" flex w-full justify-between  pt-10 pr-16">
       <h1 class="text-3xl font-bold text-background-dark-blue">Colaboradores</h1>
-      <button @click.prevent="toggleModal" class="flex w-42 px-4 py-1 items-center gap-2 justify-center bg-background-dark-blue text-white rounded-7 hover:bg-light-blue">
-        <i class="fa-solid fa-circle-plus text-white"></i>
-        <span>Novo Colaborador</span>
+      <button @click.prevent="toggleModal" class=" w-42   bg-background-dark-blue hover:bg-light-blue text-white font-bold py-2 px-9 rounded-7 inline-flex items-center">
+        <i class="fa-regular fa-circle-xmark rotate-45  text-white"></i>
+        <span class="ml-2">Adiconar Colaborador</span>
       </button>
     </div>
     <CollaboratorsTable :collaborators="collaboratorsList"/>
